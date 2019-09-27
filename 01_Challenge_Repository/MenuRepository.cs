@@ -40,5 +40,17 @@ namespace _01_Challenge_Repository
             AddToMenu(contentOne);
             AddToMenu(contentTwo);
         }
+
+        public Menu GetMenuItemById(int userChoice)
+        {
+            foreach (Menu content in _menuList)
+            {
+                if(userChoice == content.MealNumber)
+                {
+                    return content;
+                }
+            }
+                return null;
+        }
     }
 }
