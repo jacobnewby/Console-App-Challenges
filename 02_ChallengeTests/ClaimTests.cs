@@ -18,13 +18,13 @@ namespace _02_ChallengeTests
 
             Assert.AreEqual(expected, contentOne.ClaimAmount);
 
-            ClaimContent content = new ClaimContent(1, ClaimType.Car, 300m, 9 / 1 / 09, 9 / 4 / 09, true);
+            ClaimContent content = new ClaimContent(1, ClaimType.Car, 300m, DateTime.Today, DateTime.Today);
 
             int expectedID = 1;
             ClaimType expectedType = ClaimType.Car;
             decimal expectedClaimAmount = 300m;
-            int expectedDateOfIncident = 9 / 1 / 09;
-            int expectedDateOfClaim = 9 / 4 / 09;
+            DateTime expectedDateOfIncident = DateTime.Today;
+            DateTime expectedDateOfClaim = DateTime.Today;
             bool expectedIsValid = true;
 
             Assert.AreEqual(expectedID, content.ClaimID);
@@ -39,10 +39,10 @@ namespace _02_ChallengeTests
         public void AddToList_ClaimContentObject()
         {
             ClaimRepository claimRepo = new ClaimRepository();
-            List<ClaimContent> content = claimRepo.GetContentList();
+            Queue<ClaimContent> content = claimRepo.GetContentQueue();
 
-            ClaimContent contentOne = new ClaimContent(1, ClaimType.Car, 300m, 9 / 1 / 09, 9 / 4 / 09, true);
-            ClaimContent contentTwo = new ClaimContent(2, ClaimType.Home, 2000m, 9 / 5 / 09, 9 / 7 / 08, true);
+            ClaimContent contentOne = new ClaimContent(1, ClaimType.Car, 300m, DateTime.Today, DateTime.Today);
+            ClaimContent contentTwo = new ClaimContent(2, ClaimType.Home, 2000m, DateTime.Today, DateTime.Today);
 
             int expected = 2;
 
@@ -53,20 +53,20 @@ namespace _02_ChallengeTests
         }
 
         [TestMethod]
-        public void RemoveProductContentFromListTest()
+        public void RemoveProductContentFromQueueTest()
         {
             ClaimRepository claimRepo = new ClaimRepository();
-            List<ClaimContent> content = claimRepo.GetContentList();
+            Queue<ClaimContent> content = claimRepo.GetContentQueue();
 
-            ClaimContent contentOne = new ClaimContent(1, ClaimType.Car, 300m, 9 / 1 / 09, 9 / 4 / 09, true);
-            ClaimContent contentTwo = new ClaimContent(2, ClaimType.Home, 2000m, 9 / 5 / 09, 9 / 7 / 08, true);
+            ClaimContent contentOne = new ClaimContent(1, ClaimType.Car, 300m, DateTime.Today, DateTime.Today);
+            ClaimContent contentTwo = new ClaimContent(2, ClaimType.Home, 2000m, DateTime.Today, DateTime.Today);
 
             int expected = 1;
 
             claimRepo.AddToList(contentOne);
             claimRepo.AddToList(contentTwo);
 
-            claimRepo.RemoveContentFromList(2);
+            claimRepo.RemoveContentFromQueue(2);
 
             int actual = content.Count;
             Assert.AreEqual(expected, actual);

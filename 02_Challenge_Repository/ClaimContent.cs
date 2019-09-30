@@ -10,14 +10,14 @@ namespace _02_Challenge_Repository
     public class ClaimContent
     {
         //claimid, claimtype, description, claimamount, deateofincident, dateofclaim, isvalid type- Car, home, theft
-        public ClaimContent(int claimID, ClaimType type, decimal claimAmount, int dateOfIncident, int dateOfClaim, bool isValid)
+        public ClaimContent(int claimID, ClaimType type, decimal claimAmount, DateTime dateOfIncident, DateTime dateOfClaim)
         {
             ClaimID = claimID;
             Type = type;
             ClaimAmount = claimAmount;
             DateOfIncident = dateOfIncident;
             DateOfClaim = dateOfClaim;
-            IsValid = isValid;
+            IsValid = (dateOfClaim - dateOfIncident).Days <= 30;
         }
         public ClaimContent()
         {
@@ -27,8 +27,8 @@ namespace _02_Challenge_Repository
         public int ClaimID { get; set; }
         public ClaimType Type { get; set; }
         public decimal ClaimAmount { get; set; }
-        public int DateOfIncident { get; set; }
-        public int DateOfClaim { get; set; }
+        public DateTime DateOfIncident { get; set; }
+        public DateTime DateOfClaim { get; set; }
         public bool IsValid { get; set; }
 
     }

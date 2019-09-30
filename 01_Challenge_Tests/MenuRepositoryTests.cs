@@ -73,5 +73,19 @@ namespace _01_Challenge_Tests
 
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void GetMenuItemByIDTest()
+        {
+            MenuRepository menuRepo = new MenuRepository();
+
+            Menu contentOne = new Menu(1, "McChicken", "It's alright", "You don't want to know", 1.89m);
+            Menu contentTwo = new Menu(2, "McDouble", "It's alright", "You don't want to know", 1.89m);
+
+            menuRepo.AddToMenu(contentOne);
+            menuRepo.AddToMenu(contentTwo);
+
+            menuRepo.GetMenuItemById(1);
+        }
     }
 }

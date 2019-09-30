@@ -8,34 +8,39 @@ namespace _02_Challenge_Repository
 {
     public class ClaimRepository
     {
-        List<ClaimContent> _contentList = new List<ClaimContent>();
+        Queue<ClaimContent> _contentQueue = new Queue<ClaimContent>();
 
         public void AddToList(ClaimContent content)
         {
-            _contentList.Add(content);
+            _contentQueue.Enqueue(content);
         }
 
-        public List<ClaimContent> GetContentList()
+        public Queue<ClaimContent> GetContentQueue()
         {
-            return _contentList;
+            return _contentQueue;
         }
 
-        public void RemoveContentFromList(int claimID)
+        public void RemoveContentFromQueue(int claimID)
         {
-            foreach(ClaimContent contents in _contentList)
+            foreach (ClaimContent contents in _contentQueue)
             {
-                if(contents.ClaimID == claimID)
+                if (contents.ClaimID == claimID)
                 {
-                    _contentList.Remove(contents);
+                    _contentQueue.Dequeue();
                     break;
                 }
             }
         }
 
+        public void RemoveFirstItemFromQueue()
+        {
+            _contentQueue.Dequeue();
+        }
+
         public void SeedList()
         {
-            ClaimContent content = new ClaimContent(1, ClaimType.Car, 300m, 9 / 1 / 09, 9 / 4 / 09, true);
-            ClaimContent contentTwo = new ClaimContent(2, ClaimType.Home, 2000m, 9 / 5 / 09, 9 / 7 / 08, true);
+            ClaimContent content = new ClaimContent(1, ClaimType.Car, 300m, DateTime.Today, DateTime.Today);
+            ClaimContent contentTwo = new ClaimContent(2, ClaimType.Home, 2000m,DateTime.Today, DateTime.Today);
 
             AddToList(content);
             AddToList(contentTwo);
