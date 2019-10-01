@@ -15,12 +15,17 @@ namespace _04_Challenge_Repository
             _outingList.Add(content);
         }
 
+        public List<OutingContent> GetOutingList()
+        {
+            return _outingList;
+        }
+
         public decimal CombinedCostOfAllOutingsGet()
         {
             decimal sum = 0;
             foreach (OutingContent content in _outingList)
             {
-                sum = +content.CostForEvent;
+                sum += content.CostForEvent;
             }
             return sum;
         }
@@ -32,7 +37,7 @@ namespace _04_Challenge_Repository
             {
                 if (content.Type == OutingType.AmusementPark)
                 {
-                    sum = +content.CostForEvent;
+                    sum += content.CostForEvent;
                 }
                 else
                 {
@@ -49,7 +54,7 @@ namespace _04_Challenge_Repository
             {
                 if (content.Type == OutingType.Bowling)
                 {
-                    sum = +content.CostForEvent;
+                    sum += content.CostForEvent;
                 }
                 else
                 {
@@ -66,7 +71,7 @@ namespace _04_Challenge_Repository
             {
                 if (content.Type == OutingType.Concert)
                 {
-                    sum = +content.CostForEvent;
+                    sum += content.CostForEvent;
                 }
                 else
                 {
@@ -83,7 +88,7 @@ namespace _04_Challenge_Repository
             {
                 if (content.Type == OutingType.Golf)
                 {
-                    sum = +content.CostForEvent;
+                    sum += content.CostForEvent;
                 }
                 else
                 {
@@ -91,6 +96,13 @@ namespace _04_Challenge_Repository
                 }
             }
             return sum;
+        }
+
+        public void SeedList()
+        {
+            OutingContent content = new OutingContent(OutingType.Concert, 10, DateTime.Today, 10m);
+
+            AddToList(content);
         }
     }
 }

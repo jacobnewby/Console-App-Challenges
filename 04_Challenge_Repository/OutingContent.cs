@@ -14,13 +14,13 @@ namespace _04_Challenge_Repository
         {
         }
 
-        public OutingContent(OutingType type, int peopleAttended, DateTime date, decimal costPerPerson, decimal costForEvent)
+        public OutingContent(OutingType type, int peopleAttended, DateTime date, decimal costPerPerson)
         {
             Type = type;
             PeopleAttended = peopleAttended;
             Date = date;
             CostPerPerson = costPerPerson;
-            CostForEvent = costForEvent;
+            CostForEvent = peopleAttended * costPerPerson;
         }
 
         public OutingType Type { get; set; }
