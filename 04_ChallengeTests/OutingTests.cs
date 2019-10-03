@@ -18,7 +18,7 @@ namespace _04_ChallengeTests
 
             Assert.AreEqual(expected, contentOne.CostForEvent);
 
-            OutingContent content = new OutingContent(OutingType.Concert, 10, DateTime.Today, 10m, 100m);
+            OutingContent content = new OutingContent(OutingType.Concert, 10, DateTime.Today, 10m);
 
             OutingType expectedType = OutingType.Concert;
             int expectedAttended = 10;
@@ -39,7 +39,7 @@ namespace _04_ChallengeTests
             OutingRepo outingRepo = new OutingRepo();
             List<OutingContent> outingList = outingRepo.GetOutingList();
 
-            OutingContent content = new OutingContent(OutingType.Concert, 10, DateTime.Today, 10m, 100m);
+            OutingContent content = new OutingContent(OutingType.Concert, 10, DateTime.Today, 10m);
 
             int expected = 1;
 

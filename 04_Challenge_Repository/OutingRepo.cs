@@ -15,7 +15,7 @@ namespace _04_Challenge_Repository
             _outingList.Add(content);
         }
 
-        public List<OutingContent> GetOutingList()
+        public List<OutingContent> GetOutingList() 
         {
             return _outingList;
         }
